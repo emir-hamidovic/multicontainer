@@ -13,3 +13,8 @@ after_success:
   - docker build -t emirhamidovic/multi-nginx ./nginx
   - docker build -t emirhamidovic/multi-server ./server
   - docker build -t emirhamidovic/multi-worker ./worker 
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-std-in
+  - docker push emirhamidovic/multi-client
+  - docker push emirhamidovic/multi-nginx
+  - docker push emirhamidovic/multi-server
+  - docker push emirhamidovic/multi-worker
